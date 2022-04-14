@@ -170,16 +170,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\DasboardController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Award.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Pack.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\UpgradeAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -232,7 +240,6 @@
     <Content Include="CreamStyle\img\testimonial-1.jpg" />
     <Content Include="CreamStyle\img\testimonial-2.jpg" />
     <Content Include="CreamStyle\img\testimonial-3.jpg" />
-    <Content Include="CreamStyle\js\main.js" />
     <Content Include="Content\counterup\counterup.min.js" />
     <Content Include="Content\easing\easing.js" />
     <Content Include="Content\easing\easing.min.js" />
@@ -259,9 +266,6 @@
     <Content Include="Content\owlcarousel\owl.carousel.min.js" />
     <Content Include="Content\waypoints\links.php" />
     <Content Include="Content\waypoints\waypoints.min.js" />
-    <Content Include="CreamStyle\mail\contact.js" />
-    <Content Include="CreamStyle\mail\contact.php" />
-    <Content Include="CreamStyle\mail\jqBootstrapValidation.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -293,13 +297,6 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Navbar.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Admin\Views\Dasboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\isotope\isotope.pkgd.js" />
     <Content Include="Scripts\isotope\isotope.pkgd.min.js" />
@@ -461,10 +458,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\NewFolder1\" />
+    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="CreamStyle\css\" />
-    <Folder Include="CreamStyle\lib\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
