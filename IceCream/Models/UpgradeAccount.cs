@@ -8,6 +8,7 @@ namespace IceCream.Models
 {
     public class UpgradeAccount
     {
+        public int Id { get; set; }
         [ForeignKey("Account")]
         public int AccountId { get; set; }         
         public virtual Account Account { get; set; }

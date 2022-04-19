@@ -8,6 +8,7 @@ namespace IceCream.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles = "User")]
         public ActionResult Index()
         {
             return View();

@@ -26,7 +26,10 @@ namespace IceCream
                           "~/Scripts/owlcarousel/owl.carousel.min.js",
                           "~/Scripts/isotope/isotope.pkgd.min.js",
                           "~/Scripts/lightbox/js/lightbox.min.js",
-                          "~/Scripts/main.js"
+                          "~/Scripts/main.js",
+                          "~/Content/js/plugins/ckeditor/ckeditor.js",
+                          "~/Content/js/plugins/ckfinder/ckfinder.js"
+
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
