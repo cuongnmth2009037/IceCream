@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace IceCream.Models
@@ -79,6 +80,23 @@ namespace IceCream.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 15)]
+        public string FullName { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public string Birthday { get; set; }
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        public string Phone { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 20)]
+        public string Address { get; set; }
+        [Required]
+        public string Avatar { get; set; }
+        [Required]
+        public int Status { get; set; }
     }
 
     public class ResetPasswordViewModel

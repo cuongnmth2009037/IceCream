@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,6 +17,11 @@ namespace IceCream.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public string FullName { get; set; }
+        public string Birthday { get; set; }
+        public string Address { get; set; }
+        public string Avatar { get; set; }      
+        public int Status { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

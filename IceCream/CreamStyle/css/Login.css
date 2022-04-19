@@ -8,7 +8,7 @@
 section {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
 }
 
@@ -52,15 +52,15 @@ section {
             }
 
             section .content .form .input-form {
-                margin-bottom: 20px;
-            }
+                margin-bottom: 10px;
+                color: #607db8;
+            }           
 
 
                 section .content .form .input-form span {
                     font-size: 16px;
                     margin-bottom: 5px;
-                    display: inline-block;
-                    color: #607db8;
+                    display: inline-block;                    
                     letter-spacing: 1px;
                 }
 

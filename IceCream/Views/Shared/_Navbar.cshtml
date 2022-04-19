@@ -4,11 +4,30 @@
         <div class="row">
             <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white pr-3" href="">FAQs</a>
-                    <span class="text-white">|</span>
-                    <a class="text-white px-3" href="">Help</a>
-                    <span class="text-white">|</span>
-                    <a class="text-white pl-3" href="">Support</a>
+                    <a class="text-white pr-3" href="">FAQs</a>                    
+                    <a class="text-white pr-3" href="">Help</a>                   
+                    <a class="text-white" href="">Support</a>                  
+                    @using Microsoft.AspNet.Identity
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="dropdown">
+                                <button class="ml-3 text-black-50 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @Html.ActionLink( User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "ml-3 text-white" })
+                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "ml-3 text-white" })
+                    }
                 </div>
             </div>
             <div class="col-md-6 text-center text-lg-right">
@@ -27,7 +46,7 @@
                     </a>
                     <a class="text-white pl-3" href="">
                         <i class="fab fa-youtube"></i>
-                    </a>
+                    </a>                  
                 </div>
             </div>
         </div>
@@ -39,23 +58,23 @@
     <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow p-lg-0">
             <a href="index.html" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-4 text-primary"><span class="text-secondary">i</span>CREAM</h1>
+                <h1 class="m-0 display-4 text-primary"><span class="text-secondary">ICE</span>CREAM</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="product.html" class="nav-item nav-link">Product</a>
+                    <a href="index.html" class="nav-item nav-link active">Home</a>                   
+                    <a href="recipe.html" class="nav-item nav-link">Recipe</a>
+                    <a href="book.html" class="nav-item nav-link">Book</a>
                 </div>
                 <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
-                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">i</span>CREAM</h1>
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">ICE</span>CREAM</h1>
                 </a>
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="service.html" class="nav-item nav-link">Service</a>
-                    <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="award.html" class="nav-item nav-link">Awards</a>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
             </div>
