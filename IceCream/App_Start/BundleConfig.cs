@@ -29,6 +29,7 @@ namespace IceCream
                           "~/Scripts/main.js",
                           "~/Content/js/plugins/ckeditor/ckeditor.js",
                           "~/Content/js/plugins/ckfinder/ckfinder.js"
+                          
 
                       ));
 
@@ -36,7 +37,8 @@ namespace IceCream
                      "~/Content/all.min.css",
                       "~/Content/owlcarousel/assets/owl.carousel.min.css",
                       "~/Content/lightbox/css/lightbox.min.css",
-                      "~/Content/style.css"
+                      "~/Content/style.css",
+                      "~/Content/Site.css"
                       ));
         }
     }

@@ -1,26 +1,41 @@
 ﻿   <!-- Topbar Start -->
+@using Microsoft.AspNet.Identity
+@using IceCream.Models;
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+    var userid = User.Identity.GetUserId();
+    var user = db.Users.Where(x => x.Id == userid).FirstOrDefault();
+    if(user != null) {
+        ViewBag.Avatar = user.Avatar;
+    }
+
+
+}
 <div class="container-fluid bg-primary py-3 d-none d-md-block">
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white pr-3" href="">FAQs</a>                    
-                    <a class="text-white pr-3" href="">Help</a>                   
-                    <a class="text-white" href="">Support</a>                  
-                    @using Microsoft.AspNet.Identity
+                    <a class="text-white pr-3" href="">FAQs</a>
+                    <a class="text-white pr-3" href="">Help</a>
+                    <a class="text-white" href="">Support</a>
+
                     @if (Request.IsAuthenticated)
                     {
                         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                         {
                             @Html.AntiForgeryToken()
-                            <div class="dropdown">
-                                <button class="ml-3 text-black-50 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    @Html.ActionLink( User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                                </div>
-                            </div>
+                <div class="dropdown">
+                    <a class="ml-3 d-flex align-items-center text-black-50 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar">
+                            <img src="@ViewBag.Avatar" alt="@User.Identity.GetUserName()" />
+                        </div>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        <a class="dropdown-item" >Profile</a>
+                    </div>                    
+                </div>
                         }
                     }
                     else
@@ -46,7 +61,7 @@
                     </a>
                     <a class="text-white pl-3" href="">
                         <i class="fab fa-youtube"></i>
-                    </a>                  
+                    </a>
                 </div>
             </div>
         </div>
@@ -65,7 +80,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>                   
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="recipe.html" class="nav-item nav-link">Recipe</a>
                     <a href="book.html" class="nav-item nav-link">Book</a>
                 </div>
