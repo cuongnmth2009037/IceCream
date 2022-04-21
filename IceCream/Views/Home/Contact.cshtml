@@ -1,17 +1,60 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Trang Login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="~/CreamStyle/css/Login.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section>
+        <!--End of Image Section-->
+        <!--Getting Started with Content-->
+        <div class="content">
+            <div class="form">
+                <h2>Contact</h2>
+                <form action="">
+                    <div class="input-form">
+                        <span>Name</span>
+                        <input type="text" name="">
+                    </div>
+                    <div class="input-form">
+                        <span>Email</span>
+                        <input type="email" name="">
+                    </div>
+                    <div class="input-form">
+                        <span>Phone Number</span>
+                        <input type="text" name="">
+                    </div>
+                    <div class="input-form">
+                        <span>Message</span>
+                        <input type="text" name="">
+                    </div>
+                    <div class="input-form">
+                        <input type="submit" value="SEND">
+                    </div>
+                </form>
+                <ul class="login-icon">
+                    <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-google" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-5">
+            <div class="form-text text-primary">
+                <h2 class="text-primary">ICream</h2>
+                <br />
+                Adress: 8 Ton That Thuyet, Mi Dinh 2, Cau Giay, Ha Noi
+                <br />
+                Phone:  096 461 5565 - 098 197 7600 (24/7)
+                <br />
+                Email:  ICream@gmail.com
+            </div>
+        </div>
+    </section>
+</body>
+</html>
