@@ -80,7 +80,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-item nav-link active" })                    
                     <a href="recipe.html" class="nav-item nav-link">Recipe</a>
                     <a href="book.html" class="nav-item nav-link">Book</a>
                 </div>
@@ -88,9 +88,9 @@
                     <h1 class="m-0 display-4 text-primary"><span class="text-secondary">ICE</span>CREAM</h1>
                 </a>
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="about.html" class="nav-item nav-link">About</a>
+                    @Html.ActionLink("About", "About", "Home", new { @class = "nav-item nav-link" })
                     <a href="award.html" class="nav-item nav-link">Awards</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-item nav-link" })
                 </div>
             </div>
         </nav>
