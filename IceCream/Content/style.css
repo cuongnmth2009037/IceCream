@@ -9722,7 +9722,13 @@ h2,
 h3,
 h4,
 .font-weight-semi-bold {
-  font-weight: 600 !important;
+    font-weight: 600 !important;    
+}
+
+h4,
+.font-weight-semi-bold {
+    font-weight: 600 !important;
+    color: #62C3E7
 }
 
 h5,
