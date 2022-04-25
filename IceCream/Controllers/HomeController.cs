@@ -40,5 +40,13 @@ namespace IceCream.Controllers
         {
             return View();
         }
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Recipe()
+        {
+            return View();
+        }
     }
 }
