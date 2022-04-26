@@ -12,76 +12,81 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<section>
-    <div class="img-bg">
-        <img src="https://yellowcabpizza.vn/hinh-anh-cac-loai-kem-tuoi/imager_4_8343_700.jpg" alt="Hình Ảnh Minh Họa">
-    </div>
-    <div class="content">
-        <div class="form">
-            <h2>REGISTER</h2>
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="input-form">
-                    <span>Fullname</span>
-                    @Html.TextBoxFor(m => m.FullName, new { @class = "" })
-                    @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
+            <section>
+                <div class="img-bg">
+                    <img src="https://yellowcabpizza.vn/hinh-anh-cac-loai-kem-tuoi/imager_4_8343_700.jpg" alt="Hình Ảnh Minh Họa">
                 </div>
-                <div class="input-form">
-                    <span>Birthday</span>
-                    @Html.TextBoxFor(m => m.Birthday, new { @class = "", Type = "Date" })
-                    @Html.ValidationMessageFor(m => m.Birthday, "", new { @class = "text-danger" })
+                <div class="content">
+                    <div class="form">
+                        <h2>REGISTER</h2>
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="input-form">
+                                <span>Fullname</span>
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <span>Birthday</span>
+                                @Html.TextBoxFor(m => m.Birthday, new { @class = "", Type = "Date" })
+                                @Html.ValidationMessageFor(m => m.Birthday, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <span>Address</span>
+                                @Html.TextBoxFor(m => m.Address, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <span>Phone</span>
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <span>Avatar</span>
+                                @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "", @id = "txtImage" }, id = "txtImage" })
+                                <img class="img img-thumbnail" id="Img" src="" style="height: 150px;width:150px; object-fit:cover" />
+                                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
+                                <button class="btn btn-secondary" onclick="ChooseImg()">choose image</button>
+                            </div>
+                            <div class="input-form">
+                                <span>Email</span>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <span>Password</span>
+                                @Html.PasswordFor(m => m.Password, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <span>Confirmpassword</span>
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "" })
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" value="Register">
+                            </div>
+                            <div class="input-form">
+                                <p>Do not have an account?  @Html.ActionLink("Login", "Login", "Account")</p>
+                            </div>
+                        }
+                        <h3>Social Login</h3>
+                        <ul class="login-icon">
+                            <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-google" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="input-form">
-                    <span>Address</span>
-                    @Html.TextBoxFor(m => m.Address, new { @class = "" })
-                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
-                </div>
-                <div class="input-form">
-                    <span>Phone</span>
-                    @Html.TextBoxFor(m => m.Phone, new { @class = "" })
-                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-                </div>
-                <div class="input-form">
-                    <span>Avatar</span>
-                    @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "", @id = "txtImage" }, id = "txtImage" })
-                    <img class="img img-thumbnail" id="Img" src="" style="height: 150px;width:150px; object-fit:cover" />
-                    @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
-                    <button class="btn btn-secondary" onclick="ChooseImg()">choose image</button>
-                </div>
-                <div class="input-form">
-                    <span>Email</span>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "" })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                </div>
-                <div class="input-form">
-                    <span>Password</span>
-                    @Html.PasswordFor(m => m.Password, new { @class = "" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                </div>
-                <div class="input-form">
-                    <span>Confirmpassword</span>
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "" })
-                </div>
-                <div class="input-form">
-                    <input type="submit" value="Register">
-                </div>
-                <div class="input-form">
-                    <p>Do not have an account?  @Html.ActionLink("Login", "Login", "Account")</p>
-                </div>
-            }
-            <h3>Social Login</h3>
-            <ul class="login-icon">
-                <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-                <li><i class="fa fa-google" aria-hidden="true"></i></li>
-                <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
-            </ul>
+            </section>
         </div>
     </div>
-</section>
-
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
