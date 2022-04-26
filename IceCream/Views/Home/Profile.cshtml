@@ -1,9 +1,21 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+@using IceCream.Models;
 @{
-    ViewBag.Title = "Profile";
-    <link href="~/CreamStyle/css/profile.css" rel="stylesheet" />
+    ViewBag.Title = "Profile";    
+    ApplicationDbContext db = new ApplicationDbContext();
+    var userid = User.Identity.GetUserId();
+    var user = db.Users.Where(x => x.Id == userid).FirstOrDefault();
+    if (user != null)
+    {
+        ViewBag.Avatar = user.Avatar;
+        ViewBag.Fullname = user.FullName;
+        ViewBag.Birthday = user.Birthday;
+        ViewBag.Address = user.Address;
+        ViewBag.Email = user.Email;
+        ViewBag.Phone = user.PhoneNumber;
+    }
 }
-
+<link href="~/CreamStyle/css/profile.css" rel="stylesheet" />
 <div class="container">
     <div class="main-body">
 
@@ -16,12 +28,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                            <img src="@ViewBag.Avatar" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4>Vuong Van Hieu</h4>
-                                <p class="text-secondary mb-1">Nong Dan</p>
-                                <p class="text-muted font-size-sm">An Luong Thanh Ha Hai Duong</p>
-                                <button class="btn btn-outline-primary">Copy</button>   
+                                <h4>@ViewBag.Fullname</h4>
+                              @*  <p class="text-secondary mb-1">Nong Dan</p>*@
+                                @*<p class="text-muted font-size-sm">An Luong Thanh Ha Hai Duong</p>
+                                <button class="btn btn-outline-primary">Copy</button>*@
                             </div>
                         </div>
                     </div>
@@ -34,12 +46,10 @@
                             <span class="text-secondary"></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
-                            <span class="text-secondary">bootdey</span>
+                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>                           
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                            <span class="text-secondary">bootdey</span>
+                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>                           
                         </li>
                     </ul>
                 </div>
@@ -52,7 +62,7 @@
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Kenneth Valdez
+                                @ViewBag.Fullname
                             </div>
                         </div>
                         <hr>
@@ -61,7 +71,7 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                fip@jukmuh.al
+                                @ViewBag.Email
                             </div>
                         </div>
                         <hr>
@@ -70,16 +80,16 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                (239) 816-9029
+                                @ViewBag.Phone
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Mobile</h6>
+                                <h6 class="mb-0">Birthday</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                (320) 380-4539
+                                @ViewBag.Birthday
                             </div>
                         </div>
                         <hr>
@@ -88,13 +98,13 @@
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Bay Area, San Francisco, CA
+                                @ViewBag.Address
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                <a class="btn btn-info " target="__blank" href="">Edit</a>
                             </div>
                         </div>
                     </div>

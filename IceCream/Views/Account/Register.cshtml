@@ -84,6 +84,23 @@
                     </div>
                 </div>
             </section>
+                <div class="input-form">
+                    <span>Confirmpassword</span>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "" })
+                </div>
+                <div class="input-form">
+                    <input type="submit" value="Register">
+                </div>
+                <div class="input-form">
+                    <p>Already have an account?  @Html.ActionLink("Login", "Login", "Account")</p>
+                </div>
+            }
+            <h3>Social Login</h3>
+            <ul class="login-icon">
+                <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+                <li><i class="fa fa-google" aria-hidden="true"></i></li>
+                <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+            </ul>
         </div>
     </div>
 </div>

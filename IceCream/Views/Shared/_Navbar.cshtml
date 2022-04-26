@@ -33,7 +33,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                        <a class="dropdown-item" >Profile</a>
+                        @Html.ActionLink("Profile", "Profile", "Home", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
                     </div>                    
                 </div>
                         }
@@ -84,7 +84,7 @@
                     <a href="recipe.html" class="nav-item nav-link">Recipe</a>
                     <a href="book.html" class="nav-item nav-link">Book</a>
                 </div>
-                <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
+                <a href="/" class="navbar-brand mx-5 d-none d-lg-block">
                     <h1 class="m-0 display-4 text-primary"><span class="text-secondary">ICE</span>CREAM</h1>
                 </a>
                 <div class="navbar-nav mr-auto py-0">
