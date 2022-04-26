@@ -32,11 +32,15 @@ namespace IceCream.Controllers
 
             return View();
         }
-        public ActionResult Login()
+        public ActionResult Profile()
         {
             return View();
         }
-        public ActionResult Profile()
+        public ActionResult Product()
+        {
+            return View();
+        }
+        public ActionResult Recipe()
         {
             return View();
         }
