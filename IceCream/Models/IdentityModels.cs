@@ -40,6 +40,5 @@ namespace IceCream.Models
 
         public System.Data.Entity.DbSet<IceCream.Models.Book> Books { get; set; }
 
-        public System.Data.Entity.DbSet<IceCream.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
