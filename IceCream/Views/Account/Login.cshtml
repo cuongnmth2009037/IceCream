@@ -13,52 +13,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
 
+            <section>
+                <!--Start Image Section-->
+                <div class="img-bg">
+                    <img src="https://yellowcabpizza.vn/hinh-anh-cac-loai-kem-tuoi/imager_4_8343_700.jpg" alt="Hình Ảnh Minh Họa">
+                </div>
+                <!--End of Image Section-->
+                <!--Getting Started with Content-->
+                <div class="content">
+                    <div class="form">
+                        <h2>LOGIN</h2>
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="input-form">
+                                <span>Email</span>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <span>Password</span>
+                                @Html.PasswordFor(m => m.Password, new { @class = "" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" value="Log in">
+                            </div>
+                            <div class="input-form">
+                                <p>Do not have an account?  @Html.ActionLink("Registration", "Register", "Account")</p>
+                            </div>
 
-<section>
-    <!--Start Image Section-->
-    <div class="img-bg">
-        <img src="https://yellowcabpizza.vn/hinh-anh-cac-loai-kem-tuoi/imager_4_8343_700.jpg" alt="Hình Ảnh Minh Họa">
-    </div>
-    <!--End of Image Section-->
-    <!--Getting Started with Content-->
-    <div class="content">
-        <div class="form">
-            <h2>LOGIN</h2>
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="input-form">
-                    <span>Email</span>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "" })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        }
+                        <h3>Social Login</h3>
+                        <ul class="login-icon">
+                            <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-google" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="input-form">
-                    <span>Password</span>
-                    @Html.PasswordFor(m => m.Password, new { @class = "" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                </div>               
-                <div class="input-form">
-                    <input type="submit" value="Log in">
-                </div>
-                <div class="input-form">
-                    <p>Do not have an account?  @Html.ActionLink("Registration", "Register", "Account")</p>
-                </div>
-
-            }
-            <h3>Social Login</h3>
-            <ul class="login-icon">
-                <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-                <li><i class="fa fa-google" aria-hidden="true"></i></li>
-                <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
-            </ul>
+                <!--Kết Thúc Phần Nội Dung-->
+            </section>
         </div>
     </div>
-    <!--Kết Thúc Phần Nội Dung-->
-</section>
-
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
