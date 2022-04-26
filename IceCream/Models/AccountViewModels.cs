@@ -64,7 +64,7 @@ namespace IceCream.Models
     }
 
     public class RegisterViewModel
-    {
+    {       
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -81,7 +81,7 @@ namespace IceCream.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         [Required]
-        [StringLength(15, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 7)]
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string FullName { get; set; }
         [Required]
         [DataType(DataType.Date)]

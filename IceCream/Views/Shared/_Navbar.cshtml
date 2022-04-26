@@ -5,7 +5,8 @@
     ApplicationDbContext db = new ApplicationDbContext();
     var userid = User.Identity.GetUserId();
     var user = db.Users.Where(x => x.Id == userid).FirstOrDefault();
-    if(user != null) {
+    if (user != null)
+    {
         ViewBag.Avatar = user.Avatar;
     }
 
@@ -25,17 +26,17 @@
                         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                         {
                             @Html.AntiForgeryToken()
-                <div class="dropdown">
-                    <a class="ml-3 d-flex align-items-center text-black-50 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="avatar">
-                            <img src="@ViewBag.Avatar" alt="@User.Identity.GetUserName()" />
-                        </div>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                        @Html.ActionLink("Profile", "Profile", "Home", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
-                    </div>                    
-                </div>
+                            <div class="dropdown">
+                                <a class="ml-3 d-flex align-items-center text-black-50 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="avatar">
+                                        <img src="@ViewBag.Avatar" alt="@User.Identity.GetUserName()" />
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                    @Html.ActionLink("Profile", "Profile", "Home", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                                </div>
+                            </div>
                         }
                     }
                     else
@@ -43,6 +44,9 @@
                         @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "ml-3 text-white" })
                         @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "ml-3 text-white" })
                     }
+                    <a class="text-white pl-3" href="">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-md-6 text-center text-lg-right">
@@ -61,7 +65,7 @@
                     </a>
                     <a class="text-white pl-3" href="">
                         <i class="fab fa-youtube"></i>
-                    </a>
+                    </a>                  
                 </div>
             </div>
         </div>
@@ -80,7 +84,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-item nav-link active" })                    
+                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-item nav-link active" })
                     <a href="recipe.html" class="nav-item nav-link">Recipe</a>
                     <a href="book.html" class="nav-item nav-link">Book</a>
                 </div>

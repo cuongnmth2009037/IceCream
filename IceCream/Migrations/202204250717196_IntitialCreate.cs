@@ -3,7 +3,7 @@ namespace IceCream.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class IntitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -36,13 +36,9 @@ namespace IceCream.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         FullName = c.String(),
-                        Birthday = c.DateTime(nullable: false),
+                        Birthday = c.String(),
                         Address = c.String(),
                         Avatar = c.String(),
-                        Password = c.String(),
-                        ConfirmPassword = c.String(),
-                        CreatedAt = c.DateTime(nullable: false),
-                        UpdatedAt = c.DateTime(nullable: false),
                         Status = c.Int(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),

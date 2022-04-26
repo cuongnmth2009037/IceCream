@@ -35,5 +35,11 @@ namespace IceCream.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<IceCream.Models.Category> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<IceCream.Models.Book> Books { get; set; }
+
+        public System.Data.Entity.DbSet<IceCream.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

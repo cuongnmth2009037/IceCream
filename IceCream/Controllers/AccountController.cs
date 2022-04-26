@@ -43,7 +43,7 @@ namespace IceCream.Controllers
         }
 
         public ApplicationUserManager UserManager
-        {
+        {   
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();

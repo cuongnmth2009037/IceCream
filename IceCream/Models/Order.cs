@@ -11,9 +11,9 @@ namespace IceCream.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Account")]
+        [ForeignKey("ApplicationUser")]
         public int OwnerId { get; set; }
-        public virtual Account Account { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public double TotalPrice { get; set; }
         public string ShipName { get; set; }
         public string ShipAddress { get; set; }

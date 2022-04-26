@@ -9,9 +9,9 @@ namespace IceCream.Models
     public class UpgradeAccount
     {
         public int Id { get; set; }
-        [ForeignKey("Account")]
+        [ForeignKey("ApplicationUser")]
         public int AccountId { get; set; }         
-        public virtual Account Account { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("Pack")]
         public int PackId { get; set; }
         public virtual Pack Pack { get; set; }

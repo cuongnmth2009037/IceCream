@@ -6,14 +6,14 @@ namespace IceCream.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class tableuser : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class Category : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(tableuser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Category));
         
         string IMigrationMetadata.Id
         {
-            get { return "202204171616213_table-user"; }
+            get { return "202204250721148_Category"; }
         }
         
         string IMigrationMetadata.Source

@@ -18,9 +18,9 @@ namespace IceCream.Models
         public string Description { get; set; }
         public string Thumbnail { get; set; }
         public double Discount { get; set; }
-        [ForeignKey("Account")]
-        public int AuthorId { get; set; }
-        public virtual Account Account { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string AuthorId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public int Status { get; set; }

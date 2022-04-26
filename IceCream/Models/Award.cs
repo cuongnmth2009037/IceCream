@@ -8,9 +8,9 @@ namespace IceCream.Models
 {
     public class Award
     {
-        [ForeignKey("Account")]
+        [ForeignKey("ApplicationUser")]
         public int AccountId { get; set; }
-        public virtual Account Account { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("Recipe")]
         public int RecipeId { get; set; }
         public virtual Recipe Recipe { get; set; }
