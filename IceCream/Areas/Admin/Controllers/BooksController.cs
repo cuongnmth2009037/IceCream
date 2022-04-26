@@ -7,16 +7,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IceCream.Models;
+using Microsoft.AspNet.Identity;
 
 namespace IceCream.Areas.Admin.Controllers
 {
     public class BooksController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
         // GET: Admin/Books
         public ActionResult Index()
         {
+            User.Identity.GetUserId();
             var books = db.Books.Include(b => b.ApplicationUser).Include(b => b.Category);
             return View(books.ToList());
         }
@@ -39,7 +43,7 @@ namespace IceCream.Areas.Admin.Controllers
         // GET: Admin/Books/Create
         public ActionResult Create()
         {
-            ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FullName");
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FullName");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
@@ -58,7 +62,7 @@ namespace IceCream.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FullName", book.AuthorId);
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FullName", book.AuthorId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", book.CategoryId);
             return View(book);
         }
@@ -75,7 +79,7 @@ namespace IceCream.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FullName", book.AuthorId);
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FullName", book.AuthorId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", book.CategoryId);
             return View(book);
         }
@@ -93,7 +97,7 @@ namespace IceCream.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FullName", book.AuthorId);
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FullName", book.AuthorId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", book.CategoryId);
             return View(book);
         }
