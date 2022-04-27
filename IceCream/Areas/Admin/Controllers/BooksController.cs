@@ -21,7 +21,7 @@ namespace IceCream.Areas.Admin.Controllers
         public ActionResult Index()
         {
             User.Identity.GetUserId();
-            var books = db.Books.Include(b => b.ApplicationUser).Include(b => b.Category);
+            var books = db.Books.Include(b => b.ApplicationUser.FullName).Include(b => b.Category);
             return View(books.ToList());
         }
 
@@ -56,7 +56,11 @@ namespace IceCream.Areas.Admin.Controllers
         public ActionResult Create([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,AuthorId,CreatedAt,UpdatedAt,Status")] Book book)
         {
             if (ModelState.IsValid)
-            {
+            {  
+                book.AuthorId = User.Identity.GetUserId();
+                book.CreatedAt = DateTime.Now;
+                book.UpdatedAt = DateTime.Now;
+                book.Status = 1;
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,10 +93,13 @@ namespace IceCream.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,AuthorId,CreatedAt,UpdatedAt,Status")] Book book)
+        public ActionResult Edit([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,AuthorId")] Book book)
         {
             if (ModelState.IsValid)
             {
+                book.CreatedAt = DateTime.Now;
+                book.UpdatedAt = DateTime.Now;
+                book.Status = 1;
                 db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

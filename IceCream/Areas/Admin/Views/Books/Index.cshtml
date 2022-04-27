@@ -5,78 +5,127 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationUser.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Thumbnail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Discount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Areas/Admin/ContentAdmin/vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Areas/Admin/ContentAdmin/vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Areas/Admin/ContentAdmin/vendors/images/favicon-16x16.png">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Thumbnail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Discount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-</table>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/ContentAdmin/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/ContentAdmin/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/ContentAdmin/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/ContentAdmin/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/ContentAdmin/vendors/styles/style.css">
+
+
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="data-table table stripe  nowrap">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApplicationUser.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Thumbnail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedAt)
+                </th>              
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <img src="@item.Thumbnail" alt="Alternate Text" style="width:100px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>               
+                <td>
+                    <div class="d-flex">
+                        <a class="m-2" href="/Admin/Books/Edit/@item.Id">
+                            <h5><i class="dw dw-edit2 btn btn-primary"></i></h5>
+                        </a>
+                        <a class="m-2" href="/Admin/Books/Details/@item.Id">
+                            <h5><i class="dw dw-eye btn btn-warning"></i></h5>
+                        </a>
+                        <a class="m-2" href="/Admin/Books/Delete/@item.Id">
+                            <h5><i class="dw dw-delete-3 btn btn-danger"></i></h5>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <!-- js -->
+    <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/core.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/script.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/process.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/layout-settings.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <!-- buttons for Export datatable -->
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/buttons.html5.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/buttons.flash.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/pdfmake.min.js"></script>
+    <script src="~/Areas/Admin/ContentAdmin/src/plugins/datatables/js/vfs_fonts.js"></script>
+    <!-- Datatable Setting js -->
+    <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/datatable-setting.js"></script>
+</body>
+</body>

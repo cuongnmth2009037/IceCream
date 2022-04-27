@@ -179,21 +179,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Data\IceCreamContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204250717196_IntitialCreate.cs" />
-    <Compile Include="Migrations\202204250717196_IntitialCreate.Designer.cs">
-      <DependentUpon>202204250717196_IntitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204250721148_Category.cs" />
-    <Compile Include="Migrations\202204250721148_Category.Designer.cs">
-      <DependentUpon>202204250721148_Category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204260438283_ChangeAccount.cs" />
-    <Compile Include="Migrations\202204260438283_ChangeAccount.Designer.cs">
-      <DependentUpon>202204260438283_ChangeAccount.cs</DependentUpon>
+    <Compile Include="Migrations\202204260815401_Init-DB.cs" />
+    <Compile Include="Migrations\202204260815401_Init-DB.Designer.cs">
+      <DependentUpon>202204260815401_Init-DB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1667,14 +1658,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204250717196_IntitialCreate.resx">
-      <DependentUpon>202204250717196_IntitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204250721148_Category.resx">
-      <DependentUpon>202204250721148_Category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204260438283_ChangeAccount.resx">
-      <DependentUpon>202204260438283_ChangeAccount.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202204260815401_Init-DB.resx">
+      <DependentUpon>202204260815401_Init-DB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
