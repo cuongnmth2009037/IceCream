@@ -21,7 +21,7 @@ namespace IceCream.Areas.Admin.Controllers
         public ActionResult Index()
         {
             User.Identity.GetUserId();
-            var books = db.Books.Include(b => b.ApplicationUser.FullName).Include(b => b.Category);
+            var books = db.Books.Include(b => b.ApplicationUser).Include(b => b.Category);
             return View(books.ToList());
         }
 
@@ -53,7 +53,7 @@ namespace IceCream.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,AuthorId,CreatedAt,UpdatedAt,Status")] Book book)
+        public ActionResult Create([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,CreatedAt,UpdatedAt,Status")] Book book)
         {
             if (ModelState.IsValid)
             {  
