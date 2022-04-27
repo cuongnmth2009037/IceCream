@@ -46,12 +46,13 @@ namespace IceCream.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Status")] Category category)
+        public ActionResult Create([Bind(Include = "Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
                 category.CreatedAt = DateTime.Now;
                 category.UpdatedAt = DateTime.Now;
+                category.Status = 1;
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -125,7 +125,7 @@
         <div class="brand-logo">
             <a href="index.html">
                 <img src="~/Areas/Admin/ContentAdmin/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-                
+
             </a>
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                 <i class="ion-close-round"></i>
@@ -232,7 +232,8 @@
     <div>
     </div>
     <!-- js -->
-    @Html.Partial("_ScriptAdmin")
+    @Html.Partial("_ScriptAdmin")  
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 
