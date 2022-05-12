@@ -249,56 +249,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="owl-carousel product-carousel">
-                        <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
-                            <div class="bg-primary mt-n5 py-3" style="width: 80px;">
-                                <h4 class="font-weight-bold text-white mb-0">$19</h4>
+                        @foreach (var item in Model)
+                        {
+                            <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
+                                <div class="bg-primary mt-n5 py-3" style="width: 80px;">
+                                    <h4 class="font-weight-bold text-white mb-0">@item.Price $</h4>
+                                </div>
+                                <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
+                                    <img class="rounded-circle w-100 h-100" src="@item.Thumbnail" style="object-fit: cover;">
+                                </div>
+                                <h5 class="font-weight-bold mb-4">@item.Title</h5>
+                                <a href="" class="btn btn-sm btn-secondary">Order Now</a>
                             </div>
-                            <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
-                                <img class="rounded-circle w-100 h-100" src="https://nxbphunu.com.vn/wp-content/uploads/2019/04/thu-moi1.jpg" style="object-fit: cover;">
-                            </div>
-                            <h5 class="font-weight-bold mb-4">Ten sach</h5>
-                            <a href="" class="btn btn-sm btn-secondary">Order Now</a>
-                        </div>
-                        <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
-                            <div class="bg-primary mt-n5 py-3" style="width: 80px;">
-                                <h4 class="font-weight-bold text-white mb-0">$20</h4>
-                            </div>
-                            <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
-                                <img class="rounded-circle w-100 h-100" src="https://salt.tikicdn.com/cache/w1200/ts/product/b3/ea/79/245de16d56a0a4003790b2c32e2dd8a9.jpg" style="object-fit: cover;">
-                            </div>
-                            <h5 class="font-weight-bold mb-4">Ten sach</h5>
-                            <a href="" class="btn btn-sm btn-secondary">Order Now</a>
-                        </div>
-                        <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
-                            <div class="bg-primary mt-n5 py-3" style="width: 80px;">
-                                <h4 class="font-weight-bold text-white mb-0">$18</h4>
-                            </div>
-                            <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
-                                <img class="rounded-circle w-100 h-100" src="https://sachxua.vn/wp-content/uploads/2020/03/The-Classic-Italian-CookBook-Marcella-Hazan.png" style="object-fit: cover;">
-                            </div>
-                            <h5 class="font-weight-bold mb-4">Ten sach</h5>
-                            <a href="" class="btn btn-sm btn-secondary">Order Now</a>
-                        </div>
-                        <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
-                            <div class="bg-primary mt-n5 py-3" style="width: 80px;">
-                                <h4 class="font-weight-bold text-white mb-0">$15</h4>
-                            </div>
-                            <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
-                                <img class="rounded-circle w-100 h-100" src="https://top.trangdangtin.com/htdocs/images/news/2020/12/05/800/5fcb26ac0efb1_japanese_cookbook_for_beginners_classic_and_modern_recipes_made_easy.jpg" style="object-fit: cover;">
-                            </div>
-                            <h5 class="font-weight-bold mb-4">Ten sach</h5>
-                            <a href="" class="btn btn-sm btn-secondary">Order Now</a>
-                        </div>
-                        <div class="product-item d-flex flex-column align-items-center text-center bg-light rounded py-5 px-3">
-                            <div class="bg-primary mt-n5 py-3" style="width: 80px;">
-                                <h4 class="font-weight-bold text-white mb-0">$30</h4>
-                            </div>
-                            <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
-                                <img class="rounded-circle w-100 h-100" src="https://sachxua.vn/wp-content/uploads/2020/03/English-Food-Jane-Grigson.jpg" style="object-fit: cover;">
-                            </div>
-                            <h5 class="font-weight-bold mb-4">Ten sach</h5>
-                            <a href="" class="btn btn-sm btn-secondary">Order Now</a>
-                        </div>
+                        }
+
                     </div>
                 </div>
             </div>

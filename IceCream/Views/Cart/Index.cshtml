@@ -1,0 +1,108 @@
+﻿
+@model IEnumerable<IceCream.Models.CartItem>
+
+@{
+    ViewBag.Title = "ShoppingCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/CreamStyle/css/cart.css" rel="stylesheet" />
+<h2>ShoppingCart</h2>
+@{
+    var cart = HttpContext.Current.Session["cartModel"] as List<IceCream.Models.CartItem>;
+}
+@if (cart.Count > 0)
+{
+    <div class="shopping-cart">
+        <div class="column-labels">
+            <label class="product-image">Image</label>
+            <label class="product-details">Product</label>
+            <label class="product-price">Price</label>
+            <label class="product-quantity">Quantity</label>
+            <label class="product-removal">Remove</label>
+            <label class="product-line-price">Total</label>
+        </div>
+
+        @foreach (var product in Model)
+        {
+            <div class="product">
+                <div class="product-image">
+                    <img src="@product.Thumbnail">
+                </div>
+                <div class="product-details">@product.ProductName</div>
+                <div class="product-price">@product.Price</div>
+                <div class="product-quantity">
+                    <input type="number" name="product-@product.Id" class="product-quantity-input" data-product_id="@product.Id" data-product_price="@product.Price" value="@product.Quantity" min="1">
+                </div>
+                <div class="product-removal">
+                    <a href="@Url.Action("RemoveCartItem", "Cart", new { @id = product.Id })" class="remove-product">
+                        Remove
+                    </a>
+                </div>
+                <div class="product-line-price total-price-prod-@product.Id">@product.GetTotalPrice()</div>
+            </div>
+        }
+
+
+        <div class="totals">
+            <div class="totals-item">
+                <label>Subtotal</label>
+                <div class="totals-value" id="cart-subtotal">@ViewBag.SubTotal</div>
+            </div>
+            <div class="totals-item">
+                <label>Tax (5%)</label>
+                <div class="totals-value" id="cart-tax">@ViewBag.Tax</div>
+            </div>           
+            <div class="totals-item totals-item-total">
+                <label>Grand Total</label>
+                <div class="totals-value" id="cart-grandtotal">@ViewBag.GrandTotal</div>
+            </div>
+        </div>
+
+        <a href="@Url.Action("Create","Orders")"><button class="checkout">Checkout</button></a>
+
+    </div>
+}
+else 
+{
+    <p class="text-center">There are no products in the cart.</p>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/script")
+    <script>
+
+        /* Set rates + misc */
+        $(".product-quantity-input").change(function () {
+            const productId = $(this).data('product_id');
+            const productPrice = $(this).data('product_price');
+            const productQuantity = $(this).val();
+            $.ajax({
+                url: '@Url.Action("UpdateCart", "Cart")',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    Id: productId,
+                    Quantity: $(this).val()
+                }),
+                success: function (data) {
+                    $('#cart-subtotal').html(data.subTotal);
+                    $('#cart-tax').html(data.tax);
+                    $('#cart-grandtotal').html(data.grandTotal);
+                    const totalPrice = parseInt(productQuantity) * parseFloat(productPrice);
+                    $(`.total-price-prod-${productId}`).html(totalPrice);
+                },
+                error: function (xhr) {
+                }
+});
+        })
+    </script>
+}
+
+
+
+
+
+

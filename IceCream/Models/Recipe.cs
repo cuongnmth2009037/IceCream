@@ -15,7 +15,7 @@ namespace IceCream.Models
         public string Title { get; set; }
         [ForeignKey("ApplicationUser")]
         public string AuthorId { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }        
         public string Name { get; set; }
         public string Description { get; set; }
         public string Thumbnail { get; set; }

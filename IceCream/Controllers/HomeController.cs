@@ -10,13 +10,13 @@ using System.Web.Mvc;
 namespace IceCream.Controllers
 {
     public class HomeController : Controller
-    {       
-        
-        /*[Authorize(Roles = "User")]*/
+    {
+        ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-        
-            return View();
+            var book = db.Books.ToList();
+
+            return View(book);
         }
 
         public ActionResult About()
@@ -36,13 +36,24 @@ namespace IceCream.Controllers
         {
             return View();
         }
+
         public ActionResult Product()
         {
-            return View();
+            var book = db.Books.ToList();
+            return View(book);
         }
+
         public ActionResult Recipe()
         {
-            return View();
+            var recipe = db.Recipes.Where(r => r.Status == 2).OrderByDescending(r => r.CreatedAt).ToList();
+            return View(recipe);
         }
+        [Authorize]
+        public ActionResult RecipeDetail(int id)
+        {
+            var recipe = db.Recipes.Find(id);
+            return View(recipe);
+        }       
     }
+
 }

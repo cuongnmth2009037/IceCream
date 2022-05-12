@@ -1,0 +1,58 @@
+﻿
+@section scripts{
+    <script>
+        $(function () {
+            $('#AlertBox').removeClass('hide');
+            $('#AlertBox').delay(2000).slideUp(500);
+        });
+
+    </script>
+    <style>
+        #AlertBox {
+            width: 450px;
+            height: auto;
+            margin: 20px 50px 50px 450px
+        }
+    </style>
+    <script src="https://www.paypal.com/sdk/js?client-id=ATaO6gSwSEFH529YajeVFV36WXXX-KeTvWA3ycyLsFnwF6P8LPTX6ZxV_s7DSNbvb4HFiLpIlktX_DzM&components=buttons"></script>
+    <script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: "@HttpContext.Current.Session["GrandTotal"]"
+                        }
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    $.ajax({
+                            url: '@Url.Action("PaymentOrder", "Orders", new { @id = HttpContext.Current.Session["OrderId"] })',
+                            dataType: "json",
+                            type: "POST",
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify({
+                                id: @HttpContext.Current.Session["OrderId"]
+                            }),
+                            success: function (data) {
+                                console.log(data);
+                                $('#paypal-button-container').hide();
+                                $('#AlertBox').show();
+                                $('#AlertBox').html("You have successfully paid");
+                            },
+                            error: function (xhr) {
+                            },
+                        });
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+}
+<div class="alert alert-success" id="AlertBox" role="alert">
+    Your order has been successfully placed!
+</div>
+<div id="paypal-button-container" class="d-flex justify-content-center">
+
+</div>

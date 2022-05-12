@@ -53,7 +53,7 @@ namespace IceCream.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,CreatedAt,UpdatedAt,Status")] Book book)
+        public ActionResult Create([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,Price,CreatedAt,UpdatedAt,Status")] Book book)
         {
             if (ModelState.IsValid)
             {  
@@ -93,7 +93,7 @@ namespace IceCream.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,AuthorId")] Book book)
+        public ActionResult Edit([Bind(Include = "Id,CategoryId,Title,Description,Thumbnail,Discount,Price,AuthorId")] Book book)
         {
             if (ModelState.IsValid)
             {

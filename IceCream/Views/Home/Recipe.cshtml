@@ -2,6 +2,29 @@
 @{
     ViewBag.Title = "Recipe";
 }
+<style>
+    .product-image {
+        background-color: #cccccc;
+        height: 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        /*border: solid 1px #cccccc;*/
+    }
+
+        .product-image:hover {
+            transform: scale(1.2);
+        }
+
+    .main-product {
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 5px #e9e2e2;
+        cursor: pointer;
+    }
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,47 +45,20 @@
                 </div>
                 <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div id="ho_bo" class="our_products">
-                        <div class="product">
-                            <figure><img src="https://i-giadinh.vnecdn.net/2021/08/06/anhbo-1628234826-2895-1628234920.jpg" alt="#" /></figure>
+            <div class="row">   
+                @foreach (var item in Model)
+                {
+                    <a href="/Home/RecipeDetail/@item.Id" class="col-lg-3 col-md-6 col-sm-6">
+                        <div id="ho_bo" class="our_products">
+                            <div class="product">
+                                <div class="product-image" style="background-image: url(@item.Thumbnail)"></div>
+                            </div>
+                            <h3>@item.Name</h3>
+                            <span>By: @item.ApplicationUser.FullName</span>
+                            <p>@item.Description </p>
                         </div>
-                        <h3>Mangoes For Juice</h3>
-                        <span>By: Nam libero tempore</span>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div id="ho_bo" class="our_products">
-                        <div class="product">
-                            <figure><img src="https://i-giadinh.vnecdn.net/2021/08/06/anhbo-1628234826-2895-1628234920.jpg" alt="#" /></figure>
-                        </div>
-                        <h3>Apple For Juice</h3>
-                        <span>By: Nam libero tempore</span>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div id="ho_bo" class="our_products">
-                        <div class="product">
-                            <figure><img src="https://i-giadinh.vnecdn.net/2021/08/06/anhbo-1628234826-2895-1628234920.jpg" alt="#" /></figure>
-                        </div>
-                        <h3>Orange For Juice</h3>
-                        <span>By: Nam libero tempore</span>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div id="ho_bo" class="our_products">
-                        <div class="product">
-                            <figure><img src="https://i-giadinh.vnecdn.net/2021/08/06/anhbo-1628234826-2895-1628234920.jpg" alt="#" /></figure>
-                        </div>
-                        <h3>Pineapple For Juice</h3>
-                        <span>By: Nam libero tempore</span>
-                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non </p>
-                    </div>
-                </div>
+                    </a>                   
+                }
             </div>
         </div>
     </div>

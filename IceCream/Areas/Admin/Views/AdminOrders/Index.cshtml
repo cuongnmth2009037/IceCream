@@ -1,10 +1,9 @@
-﻿@model IEnumerable<IceCream.Models.Book>
+﻿@model IEnumerable<IceCream.Models.Order>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
@@ -30,32 +29,23 @@
 
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="data-table table stripe  nowrap">
+    <table class="data-table table stripe hover nowrap" >
         <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.ApplicationUser.FullName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Category.Name)
+                    @Html.DisplayNameFor(model => model.TotalPrice)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Title)
+                    @Html.DisplayNameFor(model => model.ShipName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Description)
+                    @Html.DisplayNameFor(model => model.ShipAddress)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Thumbnail)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Discount)
+                    @Html.DisplayNameFor(model => model.ShipPhone)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.CreatedAt)
@@ -63,57 +53,79 @@
                 <th>
                     @Html.DisplayNameFor(model => model.UpdatedAt)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
                 <th></th>
             </tr>
         </thead>
 
         @foreach (var item in Model)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.Raw(item.Description)
-        </td>
-        <td>
-            <img src="@item.Thumbnail" alt="Alternate Text" style="width:100px" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Discount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedAt)
-        </td>
-        <td>
-            <div class="d-flex">
-                <a class="m-2" href="/Admin/Books/Edit/@item.Id">
-                    <h5><i class="dw dw-edit2 btn btn-primary"></i></h5>
-                </a>
-                <a class="m-2" href="/Admin/Books/Details/@item.Id">
-                    <h5><i class="dw dw-eye btn btn-warning"></i></h5>
-                </a>
-                <a class="m-2" href="/Admin/Books/Delete/@item.Id">
-                    <h5><i class="dw dw-delete-3 btn btn-danger"></i></h5>
-                </a>
-            </div>
-        </td>
-    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShipName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShipAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShipPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    @if (item.Status == 1)
+                    {
+                        <a class="text-warning">
+                            Pending
+                        </a>
+                    }
+                    else if (item.Status == 2)
+                    {
+                        <a class="text-primary">
+                            Shipping
+                        </a>
+                    }
+                    else if (item.Status == 3)
+                    {
+                        <a class="text-success">
+                            Done
+                        </a>
+                    }
+                    else if (item.Status == 4)
+                    {
+                        <a class="text-success">
+                    Paid
+                        </a>
+                    }
+
+                </td>
+                <td>
+                    <div class="d-flex">
+                        <a class="m-2" href="@Url.Action("Edit","AdminOrders", new { @item.Id})">
+                            <h5><i class="dw dw-edit2 btn btn-primary"></i></h5>
+                        </a>
+                        <a class="m-2" href="@Url.Action("Delete","AdminOrders", new { @item.Id})">
+                            <h5><i class="dw dw-delete-3 btn btn-danger"></i></h5>
+                        </a>
+                    </div>
+                </td>
+            </tr>
         }
 
     </table>
+
     <!-- js -->
     <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/core.js"></script>
     <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/script.min.js"></script>
@@ -134,3 +146,4 @@
     <!-- Datatable Setting js -->
     <script src="~/Areas/Admin/ContentAdmin/vendors/scripts/datatable-setting.js"></script>
 </body>
+
