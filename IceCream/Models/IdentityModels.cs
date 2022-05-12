@@ -40,6 +40,8 @@ namespace IceCream.Models
 
         public System.Data.Entity.DbSet<IceCream.Models.Book> Books { get; set; }
 
-        public System.Data.Entity.DbSet<IceCream.Models.Recipe> Recipes { get; set; }       
+        public System.Data.Entity.DbSet<IceCream.Models.Recipe> Recipes { get; set; }
+        public System.Data.Entity.DbSet<IceCream.Models.Order> Orders { get; set; }
+        public System.Data.Entity.DbSet<IceCream.Models.OrderDetail> OrderDetails { get; set; }
     }
 }

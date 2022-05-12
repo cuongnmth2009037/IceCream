@@ -19,6 +19,7 @@ namespace IceCream.Models
         [AllowHtml]
         public string Description { get; set; }
         public string Thumbnail { get; set; }
+        public double Price { get; set; }
         public double Discount { get; set; }
         [ForeignKey("ApplicationUser")]
         public string AuthorId { get; set; }

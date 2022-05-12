@@ -10,7 +10,7 @@ using IceCream.Models;
 using Microsoft.AspNet.Identity;
 
 namespace IceCream.Areas.Admin.Controllers
-{
+{  
     public class RecipesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,7 +20,7 @@ namespace IceCream.Areas.Admin.Controllers
         public ActionResult Index()
         {
             User.Identity.GetUserId();
-            var recipes = db.Recipes.Include(r => r.ApplicationUser);
+            var recipes = db.Recipes.Include(r => r.ApplicationUser).OrderByDescending(r => r.CreatedAt);
             return View(recipes.ToList());
         }
 
@@ -89,13 +89,12 @@ namespace IceCream.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,AuthorId,Name,Description,Thumbnail,Materral,DetailStep")] Recipe recipe)
+        public ActionResult Edit([Bind(Include = "Id,Title,AuthorId,Name,Description,Thumbnail,Materral,DetailStep, Status")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
                 recipe.CreatedAt = DateTime.Now;
-                recipe.UpdatedAt = DateTime.Now;
-                recipe.Status = 1;
+                recipe.UpdatedAt = DateTime.Now;               
                 db.Entry(recipe).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

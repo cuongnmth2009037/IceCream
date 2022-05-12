@@ -1,0 +1,119 @@
+﻿
+@model IEnumerable<IceCream.Models.CartItem>
+
+@{
+    ViewBag.Title = "Paymentt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/CreamStyle/css/cart.css" rel="stylesheet" />
+<h2>ShoppingCart</h2>
+@{
+    var cart = HttpContext.Current.Session["cartModel"] as List<IceCream.Models.CartItem>;
+}
+
+    <div class="shopping-cart">
+        <div class="column-labels">
+            <label class="product-image">Image</label>
+            <label class="product-details">Product</label>
+            <label class="product-price">Price</label>
+            <label class="product-quantity">Quantity</label>
+            <label class="product-removal">Remove</label>
+            <label class="product-line-price">Total</label>
+        </div>
+
+        @foreach (var product in Model)
+        {
+            <div class="product">
+                <div class="product-image">
+                    <img src="@product.Thumbnail">
+                </div>
+                <div class="product-details">@product.ProductName</div>
+                <div class="product-price">@product.Price</div>
+                <div class="product-quantity">
+                    @product.Quantity
+                </div>               
+                <div class="product-line-price total-price-prod-@product.Id">@product.GetTotalPrice()</div>
+            </div>
+        }
+
+
+        <div class="totals">
+            <div class="totals-item">
+                <label>Subtotal</label>
+                <div class="totals-value" id="cart-subtotal">@ViewBag.SubTotal</div>
+            </div>
+            <div class="totals-item">
+                <label>Tax (5%)</label>
+                <div class="totals-value" id="cart-tax">@ViewBag.Tax</div>
+            </div>
+            <div class="totals-item totals-item-total">
+                <label>Grand Total</label>
+                <div class="totals-value" id="cart-grandtotal">@ViewBag.GrandTotal</div>
+            </div>
+        </div>       
+    </div>
+        <div class="container">
+            <div class="col-md-6">
+                @using (Html.BeginForm("null", "null", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Người mua hàng</label>
+                        <input name="" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Người nhận</label>
+                        <input name="ShipName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input name="ShipAddress" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input name="ShipPhone" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                }
+            </div>          
+        </div>    
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/script")
+    <script>
+
+        /* Set rates + misc */
+        $(".product-quantity-input").change(function () {
+            const productId = $(this).data('product_id');
+            const productPrice = $(this).data('product_price');
+            const productQuantity = $(this).val();
+            $.ajax({
+                url: '@Url.Action("UpdateCart", "Cart")',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    Id: productId,
+                    Quantity: $(this).val()
+                }),
+                success: function (data) {
+                    $('#cart-subtotal').html(data.subTotal);
+                    $('#cart-tax').html(data.tax);
+                    $('#cart-grandtotal').html(data.grandTotal);
+                    const totalPrice = parseInt(productQuantity) * parseFloat(productPrice);
+                    $(`.total-price-prod-${productId}`).html(totalPrice);
+                },
+                error: function (xhr) {
+                }
+});
+        })
+    </script>
+}
+
+
+
+
+
+

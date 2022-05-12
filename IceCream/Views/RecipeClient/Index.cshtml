@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $('#AlertBox').removeClass('hide');
+            $('#AlertBox').delay(2000).slideUp(500);
+        });
+
+    </script>
+    <style>
+        #AlertBox {
+            width: 450px;
+            height: auto;
+            margin: 20px 50px 50px 450px
+        }
+    </style>
+}
+<div class="alert alert-success" id="AlertBox" role="alert">
+    You have shared the recipe for success!
+</div>
+

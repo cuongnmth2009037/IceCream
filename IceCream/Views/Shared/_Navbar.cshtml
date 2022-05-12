@@ -12,6 +12,7 @@
 
 
 }
+
 <div class="container-fluid bg-primary py-3 d-none d-md-block">
     <div class="container">
         <div class="row">
@@ -44,8 +45,17 @@
                         @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "ml-3 text-white" })
                         @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "ml-3 text-white" })
                     }
-                    <a class="text-white pl-3" href="">
-                        <i class="fa fa-shopping-cart"></i>
+                    <a class="text-white pl-3" href="@Url.Action("Index", "Cart")">
+                        <i class="fa fa-shopping-cart">
+                            @{
+                                var cart = HttpContext.Current.Session["cartModel"] as List<IceCream.Models.CartItem>;
+                            }
+                            @if (cart != null)
+                            {
+                                <b>@cart.Count</b>
+
+                            }
+                        </i>                      
                     </a>
                 </div>
             </div>
@@ -65,7 +75,7 @@
                     </a>
                     <a class="text-white pl-3" href="">
                         <i class="fab fa-youtube"></i>
-                    </a>                  
+                    </a>
                 </div>
             </div>
         </div>
@@ -84,9 +94,21 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-item nav-link active" })
-                    <a href="recipe.html" class="nav-item nav-link">Recipe</a>
-                    <a href="book.html" class="nav-item nav-link">Book</a>
+                    <a href="@Url.Action("Index", "Home")" class="nav-item nav-link">
+                        Home
+                    </a>
+                    <div class="dropdown">
+                        <a class="ml-3 d-flex align-items-center  dropdown-toggle nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Recipe
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @Html.ActionLink("Recipe", "Recipe", "Home", routeValues: null, htmlAttributes: new { @class = " dropdown-item" })                    
+                            @Html.ActionLink("Share Recipe", "Create", "RecipeClient", routeValues: null, htmlAttributes: new { @class = " dropdown-item" })                    
+                        </div>
+                    </div>           
+                    <a href="@Url.Action("Product", "Home")" class="nav-item nav-link">
+                        Book
+                    </a>
                 </div>
                 <a href="/" class="navbar-brand mx-5 d-none d-lg-block">
                     <h1 class="m-0 display-4 text-primary"><span class="text-secondary">ICE</span>CREAM</h1>

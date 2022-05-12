@@ -1,6 +1,8 @@
 namespace IceCream.Migrations
 {
+    using IceCream.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -25,7 +27,7 @@ namespace IceCream.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-            //
+            //           
         }
     }
 }

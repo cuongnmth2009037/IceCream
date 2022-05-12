@@ -12,14 +12,14 @@ namespace IceCream.Models
         [Key]
         public int Id { get; set; }
         [ForeignKey("ApplicationUser")]
-        public int OwnerId { get; set; }
+        public string OwnerId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public double TotalPrice { get; set; }
-        public string ShipName { get; set; }
+        public string ShipName { get; set; }       
         public string ShipAddress { get; set; }
         public string ShipPhone { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public int Status { get; set; }
+        public DateTime UpdatedAt { get; set; }        
+        public int Status { get; set; }       
     }
 }

@@ -72,51 +72,62 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <img src="@item.Thumbnail" alt="Alternate Text" style="width:100px" />
-                </td>
-                <td>
-                    @Html.Raw(item.Materral)
-                </td>
-                <td>
-                    @Html.Raw(item.DetailStep)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UpdatedAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>               
-                <td>
-                    <div class="d-flex">
-                        <a class="m-2" href="/Admin/Recipes/Edit/@item.Id">
-                            <h5><i class="dw dw-edit2 btn btn-primary"></i></h5>
-                        </a>
-                        <a class="m-2" href="/Admin/Recipes/Details/@item.Id">
-                            <h5><i class="dw dw-eye btn btn-warning"></i></h5>
-                        </a>
-                        <a class="m-2" href="/Admin/Recipes/Delete/@item.Id">
-                            <h5><i class="dw dw-delete-3 btn btn-danger"></i></h5>
-                        </a>
-                    </div>
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            <img src="@item.Thumbnail" alt="Alternate Text" style="width:100px" />
+        </td>
+        <td>
+            @Html.Raw(item.Materral)
+        </td>
+        <td>
+            @Html.Raw(item.DetailStep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedAt)
+        </td>
+        <td>
+            @if (item.Status == 1)
+            {
+                <a class="text-warning">
+                    Pending
+                </a>
+            }
+            else if (item.Status == 2)
+            {
+                <a class="text-primary">
+                    Active
+                </a>
+            }
+        </td>
+        <td>
+            <div class="d-flex">
+                <a class="m-2" href="/Admin/Recipes/Edit/@item.Id">
+                    <h5><i class="dw dw-edit2 btn btn-primary"></i></h5>
+                </a>
+                <a class="m-2" href="/Admin/Recipes/Details/@item.Id">
+                    <h5><i class="dw dw-eye btn btn-warning"></i></h5>
+                </a>
+                <a class="m-2" href="/Admin/Recipes/Delete/@item.Id">
+                    <h5><i class="dw dw-delete-3 btn btn-danger"></i></h5>
+                </a>
+            </div>
+        </td>
+    </tr>
         }
 
     </table>
